@@ -246,7 +246,10 @@ spec:
 ```
 
 
-https://github.com/user-attachments/assets/6656f273-f376-4a8f-8bc4-a77d5f51b084
+
+
+https://github.com/user-attachments/assets/4e923dff-81c4-4242-84a6-595457da380a
+
 
 
 
@@ -297,7 +300,10 @@ spec:
 > when we use multi-subdomain routing, we need to add A records in our DNS for as many subdomain as we need.
 >
 
-https://github.com/user-attachments/assets/bbcf64e8-aebc-4567-b23a-afb6893f45f9
+
+
+
+https://github.com/user-attachments/assets/17ec621a-9b4e-4548-8b32-132f3a886c86
 
 
 
