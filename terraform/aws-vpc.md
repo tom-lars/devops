@@ -1,7 +1,7 @@
 # How to Create a VPC with a Public and a Private Subnet Using Terraform
 
-
-```main.tf file
+### `main.tf` file
+```hcl
 terraform {
   required_providers {
     aws = {
@@ -86,10 +86,39 @@ resource "aws_route_table_association" "private_assoc" {
   route_table_id = aws_route_table.private_rt.id
 }
 ```
+##
 
-- `terraform init` to initialize the terraform
-- `terraform fmt` to format the config file
-- `terraform validate` to validate the config file
-- `terraform plan` to plan what is about the happen with the config file
-- `terraform apply` to apply the changes
-- `terraform destroy` to undo what has been created with the config file
+To initialize the terraform
+```
+terraform init
+```
+##
+
+To format the config file
+```
+terraform fmt
+```
+##
+
+To validate the config file
+```
+terraform validate
+``` 
+## 
+
+To plan what is about the happen with the config file
+```
+terraform plan
+```
+##
+
+To apply the changes
+```
+terraform apply
+``` 
+##
+
+To undo what has been created with the config file
+```
+terraform destroy
+``` 
