@@ -1,7 +1,7 @@
 # How to Create a VPC with a Public and a Private Subnet Using Terraform
 
-main.tf file
-```hcl
+
+```hcl "main.tf file"
 terraform {
   required_providers {
     aws = {
