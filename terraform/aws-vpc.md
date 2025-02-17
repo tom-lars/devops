@@ -1,5 +1,6 @@
-main.tf file
+# How to Create a VPC with a Public and a Private Subnet Using Terraform
 
+main.tf file
 ```hcl
 terraform {
   required_providers {
