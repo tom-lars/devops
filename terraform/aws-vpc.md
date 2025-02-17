@@ -1,4 +1,4 @@
-[`main.tf`](http://main.tf) file
+main.tf file
 
 ```hcl
 terraform {
