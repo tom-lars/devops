@@ -57,6 +57,8 @@ variable "key_name" {
 
 ```bash
 #!/bin/bash
+sleep 120
+
 sudo mkfs -t ext4 /dev/xvdf
 sudo mkdir /mnt/ebs
 sudo mount /dev/xvdf /mnt/ebs
