@@ -54,3 +54,39 @@ resource "aws_instance" "my_instance" {
   }
 }
 ```
+##
+
+To initialize the terraform
+```
+terraform init
+```
+##
+
+To format the config file
+```
+terraform fmt
+```
+##
+
+To validate the config file
+```
+terraform validate
+``` 
+## 
+
+To plan what is about the happen with the config file
+```
+terraform plan
+```
+##
+
+To apply the changes
+```
+terraform apply
+``` 
+##
+
+To undo what has been created with the config file
+```
+terraform destroy
+``` 
