@@ -1,5 +1,25 @@
-## How to create an EBS volume and attach it to EC2 instance using Terraform
+# How to create an EBS volume and attach it to EC2 instance using Terraform
 
+provider.tf
+
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">1.2.0"
+}
+
+provider "aws" {
+  region = "ap-south-1"
+}
+```
+> List the Providers in `provider.tf`
+## 
 main.tf
 ```hcl
 resource "aws_instance" "my_instance" {
@@ -100,24 +120,7 @@ output "ebs_volume_id" {
 }
 ```
 
-provider.tf
 
-```hcl
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
-
-  required_version = ">1.2.0"
-}
-
-provider "aws" {
-  region = "ap-south-1"
-}
-```
 
 user-data.sh
 
