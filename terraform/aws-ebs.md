@@ -172,7 +172,8 @@ terraform plan
 To apply the changes
 ```
 terraform apply
-``` 
+```
+> To auto approve user `-auto-approve`
 ##
 
 To undo what has been created with the config file
