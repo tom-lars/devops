@@ -180,6 +180,7 @@ To undo what has been created with the config file
 ```
 terraform destroy
 ``` 
+##
 
 ![image](https://github.com/user-attachments/assets/95b74db4-b0f6-4f78-9c76-10076ee58cd1)
 
