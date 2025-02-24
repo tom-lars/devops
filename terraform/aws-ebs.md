@@ -1,6 +1,6 @@
 # How to create an EBS volume and attach it to EC2 instance using Terraform
 
-provider.tf
+### `provider.tf` file
 
 ```hcl
 terraform {
@@ -18,9 +18,55 @@ provider "aws" {
   region = "ap-south-1"
 }
 ```
-> List the Providers in `provider.tf`
+- List the Providers in `provider.tf`
 ## 
-main.tf
+
+### `variables.tf` file
+
+```hcl
+variable "aws_region" {
+  description = "AWS region to deploy resources"
+  default     = "ap-south-1"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  default     = "t2.micro"
+}
+
+variable "ami_id" {
+  description = "Amazon Machine Image (AMI) ID"
+  default     = "ami-0c55b159cbfafe1f0"
+}
+
+variable "ebs_volume_size" {
+  description = "Size of EBS volume in GB"
+  default     = 10
+}
+
+variable "key_name" {
+  description = "SSH key for access"
+  default     = "my-key"
+}
+```
+- Variables can be declared here and default values can be set here.
+- The variables can be overwritten in `terraform.tfvars`.
+##
+
+### `user-data.sh` script
+
+```bash
+#!/bin/bash
+sudo mkfs -t ext4 /dev/xvdf
+sudo mkdir /mnt/ebs
+sudo mount /dev/xvdf /mnt/ebs
+
+sudo echo "/dev/xvdf /mnt/ebs ext4 defaults,nofail 0 2" >> /etc/fstab
+```
+- This user data is used to format volume and mount it on instance.
+##
+
+### `main.tf` file
 ```hcl
 resource "aws_instance" "my_instance" {
   ami           = var.ami_id
@@ -49,37 +95,12 @@ resource "aws_volume_attachment" "volume_attachment" {
   instance_id = aws_instance.my_instance.id
 }
 ```
+- Create an Instance
+- Create an EBS volume
+- Attach the volume to the Instance
+##
 
-variables.tf
-
-```hcl
-variable "aws_region" {
-  description = "AWS region to deploy resources"
-  default     = "ap-south-1"
-}
-
-variable "instance_type" {
-  description = "EC2 instance type"
-  default     = "t2.micro"
-}
-
-variable "ami_id" {
-  description = "Amazon Machine Image (AMI) ID"
-  default     = "ami-0c55b159cbfafe1f0"
-}
-
-variable "ebs_volume_size" {
-  description = "Size of EBS volume in GB"
-  default     = 10
-}
-
-variable "key_name" {
-  description = "SSH key for access"
-  default     = "my-key"
-}
-```
-
-terraform.tfvars
+### `terraform.tfvars` file
 
 ```hcl
 variable "aws_region" {
@@ -107,8 +128,10 @@ variable "key_name" {
   default     = "my-key"
 }
 ```
+- The variables can be overwrittern through this file
+##
 
-outputs.tf
+### `outputs.tf` file
 
 ```hcl
 output "instance_public_ip" {
@@ -119,16 +142,7 @@ output "ebs_volume_id" {
   value = aws_ebs_volume.my_ebs_volume.id
 }
 ```
+- The output will be displayed through this file
 
 
 
-user-data.sh
-
-```bash
-#!/bin/bash
-sudo mkfs -t ext4 /dev/xvdf
-sudo mkdir /mnt/ebs
-sudo mount /dev/xvdf /mnt/ebs
-
-sudo echo "/dev/xvdf /mnt/ebs ext4 defaults,nofail 0 2" >> /etc/fstab
-```
