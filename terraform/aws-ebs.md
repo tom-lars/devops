@@ -143,6 +143,42 @@ output "ebs_volume_id" {
 }
 ```
 - The output will be displayed through this file
+##
+
+To initialize the terraform
+```
+terraform init
+```
+##
+
+To format the config file
+```
+terraform fmt
+```
+##
+
+To validate the config file
+```
+terraform validate
+``` 
+## 
+
+To plan what is about the happen with the config file
+```
+terraform plan
+```
+##
+
+To apply the changes
+```
+terraform apply
+``` 
+##
+
+To undo what has been created with the config file
+```
+terraform destroy
+``` 
 
 
 
