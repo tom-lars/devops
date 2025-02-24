@@ -1,5 +1,6 @@
-main.tf
+## How to create an EBS volume and attach it to EC2 instance using Terraform
 
+main.tf
 ```hcl
 resource "aws_instance" "my_instance" {
   ami           = var.ami_id
