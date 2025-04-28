@@ -1,4 +1,4 @@
-# PromQL (Prometheus Query Language) - Complete Guide
+# PromQL (Prometheus Query Language)
 
 PromQL (Prometheus Query Language) is a powerful, flexible query language used to retrieve, filter, and process time series data stored in Prometheus.
 
