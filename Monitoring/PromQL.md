@@ -1,14 +1,10 @@
-Of course! Here's a full **Markdown** (`.md`) formatted guide about **PromQL Queries in Prometheus**:
-
----
-
-# 📈 PromQL (Prometheus Query Language) - Complete Guide
+# PromQL (Prometheus Query Language) - Complete Guide
 
 PromQL (Prometheus Query Language) is a powerful, flexible query language used to retrieve, filter, and process time series data stored in Prometheus.
 
 ---
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Introduction](#introduction)
 - [Core Concepts](#core-concepts)
@@ -25,7 +21,7 @@ PromQL (Prometheus Query Language) is a powerful, flexible query language used t
 
 ---
 
-## 📝 Introduction
+## Introduction
 
 PromQL is designed for **powerful yet simple** extraction and analysis of time series data. It allows you to:
 
@@ -36,7 +32,7 @@ PromQL is designed for **powerful yet simple** extraction and analysis of time s
 
 ---
 
-## 🧠 Core Concepts
+## Core Concepts
 
 Prometheus data is a collection of **time series** identified by:
 
@@ -47,7 +43,7 @@ Each time series is uniquely identified by its combination of metric name and la
 
 ---
 
-## 📊 Data Types in PromQL
+## Data Types in PromQL
 
 | Type           | Description |
 |----------------|-------------|
@@ -58,7 +54,7 @@ Each time series is uniquely identified by its combination of metric name and la
 
 ---
 
-## 🎯 Selectors
+## Selectors
 
 ### 1. **Instant Vector Selector**
 
@@ -94,7 +90,7 @@ Fetches 5 minutes of data.
 
 ---
 
-## ➗ Operators
+## Operators
 
 | Operator | Description | Example |
 |----------|-------------|---------|
@@ -112,7 +108,7 @@ Fetches 5 minutes of data.
 
 ---
 
-## 🛠️ Functions
+## Functions
 
 PromQL includes many built-in functions:
 
@@ -136,7 +132,7 @@ This shows the CPU idle rate over the past 5 minutes.
 
 ---
 
-## 🧮 Aggregation Operators
+## Aggregation Operators
 
 Aggregation groups metrics by labels and performs operations:
 
@@ -161,7 +157,7 @@ Sums the request rates, grouped by `method`.
 
 ---
 
-## 🌀 Subqueries
+## Subqueries
 
 Subqueries allow you to select a range vector over a computed period inside a larger query:
 
@@ -175,7 +171,7 @@ avg_over_time(rate(http_requests_total[5m])[30m:])
 
 ---
 
-## 📝 Recording Rules
+## Recording Rules
 
 To **precompute** expensive queries and **save** them as a new time series:
 
@@ -193,7 +189,7 @@ This saves the computed value as `job:http_inprogress_requests:sum`.
 
 ---
 
-## 💡 Best Practices
+## Best Practices
 
 - **Use specific labels** to avoid fetching unnecessary data.
 - **Precompute** frequently used heavy queries using **recording rules**.
@@ -204,7 +200,7 @@ This saves the computed value as `job:http_inprogress_requests:sum`.
 
 ---
 
-## 📚 Useful Examples
+## Useful Examples
 
 | Task | Query |
 |------|-------|
@@ -216,7 +212,7 @@ This saves the computed value as `job:http_inprogress_requests:sum`.
 
 ---
 
-## 📖 References
+## References
 
 - [Official PromQL Documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 - [Prometheus Functions](https://prometheus.io/docs/prometheus/latest/querying/functions/)
@@ -224,7 +220,7 @@ This saves the computed value as `job:http_inprogress_requests:sum`.
 
 ---
 
-# 🚀 Bonus: Useful Cheatsheet
+# Bonus: Useful Cheatsheet
 
 ```promql
 # Basic metric
@@ -246,7 +242,4 @@ sum(rate(http_requests_total{status=~"5.."}[5m])) by (job) / sum(rate(http_reque
 topk(5, rate(container_cpu_usage_seconds_total[5m]))
 ```
 
----
 
-Would you also like a **visual diagram** of PromQL components or a **cheat sheet image**? 🎯  
-I can create that if you want!
