@@ -1,8 +1,4 @@
-Here is a complete `README.md` file with **all Terraform code blocks included**, based on your setup and requirements.
 
----
-
-````markdown
 # EKS Cluster with Terraform
 
 This project provisions an Amazon EKS cluster in the `us-east-2` region using Terraform. It creates the cluster control plane, a managed node group, and installs essential EKS add-ons such as VPC CNI, CoreDNS, and kube-proxy. The required IAM roles for the cluster and nodes must already exist and are provided via input.
@@ -23,7 +19,6 @@ This project provisions an Amazon EKS cluster in the `us-east-2` region using Te
 - `main.tf`: Infrastructure definition
 - `outputs.tf`: Useful outputs
 
----
 
 ## provider.tf
 
@@ -50,9 +45,7 @@ terraform {
 
   required_version = ">= 1.0"
 }
-````
-
----
+```
 
 ## variables.tf
 
@@ -92,7 +85,6 @@ variable "node_role_arn" {
 }
 ```
 
----
 
 ## terraform.tfvars
 
@@ -108,8 +100,6 @@ desired_size     = 2
 cluster_role_arn = "arn:aws:iam::<ACCOUNT_ID>:role/<YourClusterRole>"
 node_role_arn    = "arn:aws:iam::<ACCOUNT_ID>:role/<YourNodeRole>"
 ```
-
----
 
 ## main.tf
 
@@ -178,8 +168,6 @@ resource "aws_eks_addon" "kube_proxy" {
 }
 ```
 
----
-
 ## outputs.tf
 
 ```hcl
@@ -199,9 +187,6 @@ output "node_group_name" {
   value = aws_eks_node_group.demo.node_group_name
 }
 ```
-
----
-
 ## Usage
 
 1. Save all files in the same directory.
@@ -220,7 +205,7 @@ terraform apply
 
 Type `yes` when prompted to proceed.
 
----
+##
 
 ## Accessing the Cluster
 
@@ -232,17 +217,10 @@ aws eks --region us-east-2 update-kubeconfig --name demo_cluster
 
 Alternatively, construct the kubeconfig manually using the outputs for endpoint and certificate.
 
----
+##
 
 ## Notes
 
 * This configuration assumes public subnets in the default VPC.
 * The VPC CNI, CoreDNS, and kube-proxy add-ons are installed via the `aws_eks_addon` resource.
 * You are responsible for ensuring that the specified IAM roles have the required policies attached.
-
-```
-
----
-
-Would you like me to create a downloadable `.zip` archive or a GitHub repository layout for all this?
-```
