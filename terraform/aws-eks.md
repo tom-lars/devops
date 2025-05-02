@@ -62,6 +62,12 @@ variable "node_group_name" {
   default = "mynodegroup"
 }
 
+variable "instance_type" {
+  description = "Instance type for EKS managed node group"
+  type        = string
+  default     = "t3.medium"
+}
+
 variable "min_size" {
   default = 1
 }
@@ -92,6 +98,7 @@ variable "node_role_arn" {
 region           = "us-east-2"
 cluster_name     = "demo_cluster"
 node_group_name  = "mynodegroup"
+instance_type = "t2.medium"
 
 min_size         = 1
 max_size         = 2
@@ -118,7 +125,7 @@ data "aws_subnets" "public" {
 resource "aws_eks_cluster" "demo" {
   name     = var.cluster_name
   role_arn = var.cluster_role_arn
-
+  
   vpc_config {
     subnet_ids = data.aws_subnets.public.ids
   }
@@ -129,6 +136,8 @@ resource "aws_eks_node_group" "demo" {
   node_group_name = var.node_group_name
   node_role_arn   = var.node_role_arn
   subnet_ids      = data.aws_subnets.public.ids
+
+  instance_types = [var.instance_type]
 
   scaling_config {
     desired_size = var.desired_size
