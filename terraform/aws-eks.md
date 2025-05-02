@@ -62,6 +62,12 @@ variable "node_group_name" {
   default = "mynodegroup"
 }
 
+variable "ami_type" {
+  description = "AMI type for EKS node group"
+  type        = string
+  default     = "AL2_x86_64" # You can also use AL2_x86_64_GPU or AL2_ARM_64 depending on your instance type
+}
+
 variable "instance_type" {
   description = "Instance type for EKS managed node group"
   type        = string
@@ -98,6 +104,7 @@ variable "node_role_arn" {
 region           = "us-east-2"
 cluster_name     = "demo_cluster"
 node_group_name  = "mynodegroup"
+ami_type = "AL2_x86_64"
 instance_type = "t2.medium"
 
 min_size         = 1
@@ -138,6 +145,7 @@ resource "aws_eks_node_group" "demo" {
   subnet_ids      = data.aws_subnets.public.ids
 
   instance_types = [var.instance_type]
+  ami_type       = var.ami_type
 
   scaling_config {
     desired_size = var.desired_size
