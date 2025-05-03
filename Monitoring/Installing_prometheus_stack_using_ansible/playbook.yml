@@ -13,7 +13,7 @@
         name: "{{ ingress_namespace }}"
 
     - name: Deploy NGINX Ingress Controller
-      community.kubernetes.helm:
+      kubernetes.core.helm:
         name: "{{ nginx_release_name }}"
         chart_ref: "{{ nginx_chart }}"
         release_namespace: "{{ ingress_namespace }}"
@@ -28,7 +28,7 @@
         name: "{{ monitoring_namespace }}"
 
     - name: Deploy kube-prometheus-stack
-      community.kubernetes.helm:
+      kubernetes.core.helm:
         name: "{{ monitoring_release_name }}"
         chart_ref: "{{ monitoring_chart }}"
         release_namespace: "{{ monitoring_namespace }}"
