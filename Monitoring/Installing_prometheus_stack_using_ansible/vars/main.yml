@@ -1,11 +1,10 @@
 monitoring_namespace: monitoring
 ingress_namespace: ingress-nginx
-helm_repo_name: prometheus-community
-helm_repo_url: https://prometheus-community.github.io/helm-charts
+
 monitoring_release_name: monitoring
 monitoring_chart: prometheus-community/kube-prometheus-stack
+
 nginx_release_name: ingress-nginx
 nginx_chart: ingress-nginx/ingress-nginx
-nginx_repo_name: ingress-nginx
-nginx_repo_url: https://kubernetes.github.io/ingress-nginx
+
 ingress_file: ingress.yaml

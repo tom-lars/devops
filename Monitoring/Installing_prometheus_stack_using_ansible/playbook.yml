@@ -1,19 +1,10 @@
 - name: Deploy Monitoring Stack on EKS with NGINX Ingress
   hosts: localhost
-  gather_facts: false
+  gather_facts: true
   vars_files:
     - vars/main.yml
 
   tasks:
-    - name: Add Prometheus Helm repo
-      community.kubernetes.helm_repository:
-        name: "{{ helm_repo_name }}"
-        repo_url: "{{ helm_repo_url }}"
-
-    - name: Add NGINX Ingress Helm repo
-      community.kubernetes.helm_repository:
-        name: "{{ nginx_repo_name }}"
-        repo_url: "{{ nginx_repo_url }}"
 
     - name: Create Ingress namespace
       kubernetes.core.k8s:
@@ -28,7 +19,7 @@
         release_namespace: "{{ ingress_namespace }}"
         values: "{{ lookup('template', 'templates/nginx-values.yaml.j2') | from_yaml }}"
         create_namespace: false
-        update_repo_cache: true
+        update_repo_cache: false
 
     - name: Create Monitoring namespace
       kubernetes.core.k8s:
@@ -42,7 +33,7 @@
         chart_ref: "{{ monitoring_chart }}"
         release_namespace: "{{ monitoring_namespace }}"
         create_namespace: false
-        update_repo_cache: true
+        update_repo_cache: false
 
     - name: Apply Monitoring Ingress
       kubernetes.core.k8s:
