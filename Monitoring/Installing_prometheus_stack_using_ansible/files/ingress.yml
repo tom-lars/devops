@@ -7,9 +7,9 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: nginx
   rules:
-  - host: monitoring.example.com
-    http:
+  - http:
       paths:
       - path: /grafana/?(.*)
         pathType: Prefix
