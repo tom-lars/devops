@@ -15,7 +15,7 @@ This upgrade will:
 | Component | Version |
 |-----------|---------|
 | Kubernetes | v1.31.6-gke.1064001 |
-| Istio (Before) | 1.6.5 |
+| Istio (Before) | 1.14.3 |
 | Istio (After) | 1.26.0 |
 | Installation Method | istioctl |
 | Affected Namespaces | default, istio-system |
@@ -148,14 +148,14 @@ istioctl install \
 ### 4. Update Namespace Labels for New Revision
 
 ```bash
-kubectl label namespace default istio.io/rev=canary-1-26-0 --overwrite
+kubectl label namespace default istio.io/rev=canary-1-26-0 
 ```
 
 ### 5. Enable Automatic Sidecar Injection
 
 ```bash
 # For each namespace requiring sidecar injection
-kubectl label namespace <namespace> istio-injection=enabled --overwrite
+kubectl label namespace <namespace> istio-injection=enabled 
 ```
 
 ### 6. Restart Workloads
@@ -287,7 +287,7 @@ If issues are encountered during the upgrade process:
 ### 1. Remove New Revision Label
 
 ```bash
-kubectl label namespace default istio.io/rev- --overwrite
+kubectl label namespace default istio.io/rev- 
 ```
 
 ### 2. Restart Deployments
